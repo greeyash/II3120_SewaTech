@@ -15,6 +15,20 @@ npx expo start
 
 Di halaman awal, pilih **"Sudah punya akun? Masuk"** untuk langsung pakai akun demo terverifikasi, atau **"Daftar akun baru"** untuk mencoba alur registrasi + verifikasi KTP. Di web, tambahkan `?demo=1` di URL untuk langsung masuk.
 
+## Demo online & CI/CD
+
+Versi web otomatis ter-deploy ke **https://greeyash.github.io/II3120_SewaTech/** setiap ada perubahan di branch `main`.
+
+- **CI** (`.github/workflows/ci.yml`): setiap push ke branch fitur dan setiap pull request ke `main` dicek dengan `npm run typecheck` dan `npm run build:web`. Pull request sebaiknya baru di-merge kalau centangnya hijau.
+- **CD** (`.github/workflows/deploy.yml`): setiap push ke `main` (termasuk merge pull request) di-build lalu di-deploy ke GitHub Pages.
+
+Cek lokal sebelum push:
+
+```bash
+npm run typecheck
+npm run build:web
+```
+
 ## Aturan bisnis (sesuai laporan)
 
 - Deposit = nilai taksir × **30%** (penyewa baru) atau **20%** (penyewa terpercaya, ≥ 2 sewa selesai).
